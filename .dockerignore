@@ -1,0 +1,15 @@
+.git
+.gitignore
+*.db
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+Docs/
+Livrables/
+Nom_Prenom*
+Projet_3_SQL*
+*.zip
+*.md.resolved*
+*.metadata.json

@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Environnements
+.env
+venv/
+env/
+
+# Systeme
+.DS_Store
+.vscode/
+Thumbs.db
+
+# Donnees binaires (regenerables via scripts)
+*.db
+
+# Documents sources (fichiers volumineux)
+Docs/
