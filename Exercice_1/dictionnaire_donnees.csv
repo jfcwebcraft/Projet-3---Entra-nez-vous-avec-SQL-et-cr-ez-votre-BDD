@@ -1,0 +1,23 @@
+Table,Code,Signification,Type,Longueur,Nature,Règle de Gestion,Règle de Calcul
+Region,code_region,Code de la région,VARCHAR,2,Clé primaire,"Code officiel INSEE, non nul",-
+Region,nom_region,Nom de la région,VARCHAR,50,Attribut,"Nom officiel, non nul",-
+Commune,id_codedep_codecommune,"Identifiant de la commune (clé étrangère)",VARCHAR,10,Clé primaire,"Non nul, unique","Concaténation de Code_departement et Code_commune"
+Commune,Code_departement,Code du département,VARCHAR,3,Attribut,"Peut inclure lettres (ex: 2A, 2B), non nul",-
+Commune,Code_commune,Code de la commune,INTEGER,-,Attribut,"Nombre entier, non nul",-
+Commune,Code_postal,Code postal,INTEGER,-,Attribut,"Nombre entier à 5 chiffres",-
+Commune,Nom_commune,Nom de la commune,VARCHAR,50,Attribut,"Nom officiel, non nul",-
+Commune,code_region,"Code de la région (clé étrangère)",VARCHAR,2,Clé étrangère,"Référence Région.code_region, non nul",-
+Bien,Id_bien,Identifiant unique du bien,INTEGER,-,Clé primaire,"Auto-incrémenté, non nul",-
+Bien,id_codedep_codecommune,"Identifiant de la commune (clé étrangère)",VARCHAR,10,Clé étrangère,"Référence Commune.id_codedep_codecommune, non nul","Concaténation de Code_departement et Code_commune"
+Bien,No_voie,Numéro de voie,INTEGER,-,Attribut,"Peut être nul si non applicable",-
+Bien,BTO,Indicateur Bâtiment de Type Ordinaire,VARCHAR,1,Attribut,"Valeurs possibles : 'O' ou autre",-
+Bien,Type_voie,"Type de voie (ex: RUE, AV)",VARCHAR,4,Attribut,"Abréviation standard",-
+Bien,Voie,Nom de la voie,VARCHAR,50,Attribut,"Nom complet de la rue",-
+Bien,Total_piece,Nombre total de pièces,INTEGER,-,Attribut,"Nombre entier positif",-
+Bien,Surface_carrez,"Surface en mètres carrés (loi Carrez)",FLOAT,-,Attribut,"Valeur décimale positive",-
+Bien,Surface_local,Surface totale du local,INTEGER,-,Attribut,"Valeur entière positive",-
+Bien,Type_local,"Type de local (Appartement, Maison, etc.)",VARCHAR,50,Attribut,"Valeur textuelle descriptive",-
+Vente,Id_vente,Identifiant unique de la vente,INTEGER,-,Clé primaire,"Auto-incrémenté, non nul",-
+Vente,Id_bien,"Identifiant du bien vendu (clé étrangère)",INTEGER,-,Clé étrangère,"Référence Bien.Id_bien, non nul",-
+Vente,Date,Date de la vente,DATE,-,Attribut,"Format YYYY-MM-DD, non nul",-
+Vente,Valeur,Valeur de la vente en euros,INTEGER,-,Attribut,"Valeur entière positive",-
