@@ -1,0 +1,26 @@
+services:
+  # Explorateur Web pour la base SQLite
+  sqlite-web:
+    image: coleifer/sqlite-web
+    ports:
+      - "8055:8080"
+    volumes:
+      - .:/data
+    # On appelle explicitement l'exécutable sqlite_web avec le chemin de la base
+    # -H 0.0.0.0 est indispensable pour que le container soit accessible depuis l'hôte
+    command: [ "sqlite_web", "-H", "0.0.0.0", "/data/laplace_immo.db" ]
+    restart: unless-stopped
+
+  # Service de chargement des données (Exercice 2)
+  # Pour lancer : docker compose run data-ingestion
+  data-ingestion:
+    build:
+      context: ./Exercice_2
+      dockerfile: Dockerfile
+    volumes:
+      - ./laplace_immo.db:/laplace_immo.db
+    # On précise le chemin vers la DB pour qu'il corresponde au volume monté
+    environment:
+      - DB_PATH=/laplace_immo.db
+    profiles:
+      - tools
